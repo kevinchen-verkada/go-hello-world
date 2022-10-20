@@ -11,8 +11,15 @@ http_archive(
     ],
 )
 
-load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+load("@io_bazel_rules_go//go:deps.bzl", "go_download_sdk", "go_register_toolchains", "go_rules_dependencies")
+
+go_register_toolchains(version = "1.18.4")
 
 go_rules_dependencies()
 
-go_register_toolchains(version = "1.18.4")
+go_download_sdk(
+    name = "go_sdk_linux",
+    goarch = "amd64",
+    goos = "linux",
+    version = "1.18.1",  # Keep in sync with .github/workflows/checkstyle.yaml
+)
