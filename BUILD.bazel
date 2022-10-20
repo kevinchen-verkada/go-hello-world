@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_lib",
+    srcs = ["helloworld.go"],
+    importpath = "examples/go",
+    visibility = ["//visibility:private"],
+)
+
+platform(
+    name = "docker_image_platform",
+    constraint_values = [
+        "@platforms//cpu:arm64",
+        "@platforms//os:linux",
+    ],
+    exec_properties = {
+        "OSFamily": "Linux",
+        "use-self-hosted-executors": "true",
+    },
+)
