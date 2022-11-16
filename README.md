@@ -1,11 +1,22 @@
-Build the target with remote execution from an M1 MacBook using
-```shell
-bazel build --config=remote :all
+The unused dependency 
 ```
-Will get the following error
+"@com_github_bazelbuild_rules_go//go/tools/bazel:go_default_library",
 ```
-/external/io_bazel_rules_go/BUILD.bazel:86:17: While resolving toolchains for target @io_bazel_rules_go//:cgo_context_data: No matching toolchains found for types @bazel_tools//tools/cpp:toolchain_type. Maybe --incompatible_use_cc_configure_from_rules_cc has been flipped and there is no default C++ toolchain added in the WORKSPACE file? See https://github.com/bazelbuild/bazel/issues/10134 for details and migration instructions.
-ERROR: Analysis of target '//:go_lib' failed; build aborted:
+in 
+```
+:go_lib
+```
+is used to reproduce the following error
+```
+ERROR: /private/var/tmp/_bazel_yue.chen/444218253d55c31a8c81bb3d3b5d6919/external/com_github_bazelbuild_rules_go/go/tools/coverdata/BUILD.bazel:3:16: in go_tool_library rule @com_github_bazelbuild_rules_go//go/tools/coverdata:coverdata: 
+Traceback (most recent call last):
+	File "/private/var/tmp/_bazel_yue.chen/444218253d55c31a8c81bb3d3b5d6919/external/com_github_bazelbuild_rules_go/go/private/rules/library.bzl", line 41, column 20, in _go_library_impl
+		go = go_context(ctx)
+	File "/private/var/tmp/_bazel_yue.chen/444218253d55c31a8c81bb3d3b5d6919/external/com_github_bazelbuild_rules_go/go/private/context.bzl", line 409, column 67, in go_context
+		stdlib = _flatten_possibly_transitioned_attr(attr._stdlib)[GoStdLib]
+Error: <target @com_github_bazelbuild_rules_go//:stdlib> (rule 'stdlib') doesn't contain declared provider 'GoStdLib'
+ERROR: /private/var/tmp/_bazel_yue.chen/444218253d55c31a8c81bb3d3b5d6919/external/com_github_bazelbuild_rules_go/go/tools/coverdata/BUILD.bazel:3:16: Analysis of target '@com_github_bazelbuild_rules_go//go/tools/coverdata:coverdata' failed
+ERROR: Analysis of target '//:go_lib' failed; build aborted: 
 ```
 
-*note: Please remember to supply your own x-buildbuddy-api-key in .bazelrc
+Tried this on M1 Macbook.

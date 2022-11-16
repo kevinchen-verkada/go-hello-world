@@ -1,15 +1,4 @@
 build --bes_results_url=https://app.buildbuddy.io/invocation/
-build --bes_backend=grpcs://remote.buildbuddy.io
-build --remote_header=x-buildbuddy-api-key={redacted}
-build --remote_cache=grpcs://remote.buildbuddy.io
 build --keep_backend_build_event_connections_alive=false
 build --experimental_remote_cache_compression
 build --experimental_remote_merkle_tree_cache # recommended by https://github.com/bazelbuild/bazel/issues/10875
-
-# Remote execution
-build:remote --remote_timeout=3600
-build:remote --remote_executor=grpcs://remote.buildbuddy.io
-build:remote --jobs=50
-build:remote --extra_execution_platforms=//:docker_image_platform
-build:remote --host_platform=//:docker_image_platform
-build:remote --platforms=//:docker_image_platform
