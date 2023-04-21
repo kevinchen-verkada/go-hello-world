@@ -19,13 +19,41 @@ http_archive(
     ],
 )
 
-load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+load("@io_bazel_rules_go//go:deps.bzl", "go_download_sdk", "go_register_toolchains", "go_rules_dependencies")
 
 go_register_toolchains(version = "1.18.4")
 
 go_rules_dependencies()
 
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
+
+go_download_sdk(
+    name = "go_sdk_linux",
+    goarch = "amd64",
+    goos = "linux",
+    version = "1.18.1",
+)
+
+go_download_sdk(
+    name = "go_sdk_linux_arm64",
+    goarch = "arm64",
+    goos = "linux",
+    version = "1.18.1",
+)
+
+go_download_sdk(
+    name = "go_sdk_darwin",
+    goarch = "amd64",
+    goos = "darwin",
+    version = "1.18.1",
+)
+
+go_download_sdk(
+    name = "go_sdk_darwin_arm64",
+    goarch = "arm64",
+    goos = "darwin",
+    version = "1.18.1",
+)
 
 # gazelle:repo bazel_gazelle
 gazelle_dependencies(go_sdk = "go_sdk")

@@ -1,4 +1,5 @@
-load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@bazel_gazelle//:def.bzl", "gazelle")
 
 go_library(
     name = "go_lib",
@@ -8,4 +9,15 @@ go_library(
     deps = [
         "@com_github_bazelbuild_rules_go//go/tools/bazel:go_default_library",
     ],
+)
+
+gazelle(name = "gazelle")
+
+gazelle(
+    name = "gazelle-update-repos",
+    args = [
+        "-from_file=go.mod",
+        "-to_macro=deps.bzl%go_dependencies",
+    ],
+    command = "update-repos",
 )
