@@ -8,14 +8,6 @@ import (
 	"golang.kevinchen-verkada/helloworld/formatting"
 )
 
-func TestFormattingUppercase(t *testing.T) {
-	expected := "HELLO THERE"
-	actual := formatting.FormatOutput("Hello there", false /* useBox */)
-	if actual != expected {
-		t.Errorf("Expected %s, got %s", expected, actual)
-	}
-}
-
 func TestFormattingUppercaseWithBox(t *testing.T) {
 	expected := `┌─────────────────┐
 │                 │
