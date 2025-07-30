@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "formatting",
+    srcs = ["formatting.go"],
+    importpath = "golang.kevinchen-verkada/helloworld/formatting",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_delta456_box_cli_maker_v2//:box-cli-maker"],
+)
+
+go_test(
+    name = "formatting_test",
+    srcs = ["formatting_test.go"],
+    deps = [":formatting"],
+)
