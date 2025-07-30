@@ -6,6 +6,9 @@ coverage:
         threshold: 0%
         base: auto
 
+github_checks:
+  annotations: false
+
 comment:
-    layout: "condensed_header, condensed_files, condensed_footer"
+    layout: "files"
     hide_project_coverage: TRUE
