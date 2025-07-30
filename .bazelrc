@@ -7,3 +7,10 @@ build --noremote_upload_local_results # Uploads logs & artifacts without writing
 build --remote_timeout=10m
 # build --remote_executor=grpcs://remote.buildbuddy.io
 build --remote_header=x-buildbuddy-api-key=v4MkDpXdztGamAD8cT1P
+
+coverage --combined_report=lcov
+coverage --experimental_split_coverage_postprocessing
+coverage --experimental_fetch_all_coverage_outputs
+coverage --strategy=CoverageReport=local
+coverage --test_tag_filters=-linter,-integration
+coverage --test_lang_filters=pytest,py,go

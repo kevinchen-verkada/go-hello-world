@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/theoremlp/rules_multitool/main/lockfile.schema.json",
+  "codecov": {
+    "binaries": [
+      {
+        "kind": "file",
+        "url": "https://github.com/codecov/uploader/releases/download/v0.8.0/codecov-linux",
+        "sha256": "b37359013b48fbc3b0790d59fc474a52a260fb96e28e1b2c2ae001dc9b9cc996",
+        "os": "linux",
+        "cpu": "x86_64"
+      },
+      {
+        "kind": "file",
+        "url": "https://github.com/codecov/uploader/releases/download/v0.8.0/codecov-macos",
+        "sha256": "75086ee436f6f74c4e8f65448eaa399e38bc93bb27a53d057b24b275b9f78c89",
+        "os": "macos",
+        "cpu": "arm64"
+      }
+    ]
+  },
+  "multitool": {
+    "binaries": [
+      {
+        "kind": "archive",
+        "url": "https://github.com/theoremlp/multitool/releases/download/v0.9.0/multitool-x86_64-unknown-linux-gnu.tar.xz",
+        "file": "multitool-x86_64-unknown-linux-gnu/multitool",
+        "sha256": "34dc5968dad458a4050ebde58e484ebb7c624a119e4031347683eeb80922e6df",
+        "os": "linux",
+        "cpu": "x86_64",
+        "type": "tar.xz"
+      }
+    ]
+  }
+}
