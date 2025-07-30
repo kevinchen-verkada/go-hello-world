@@ -7,4 +7,5 @@ coverage:
         base: auto
 
 comment:
-  layout: "diff, files"
+    layout: "condensed_header, condensed_files, condensed_footer"
+    hide_project_coverage: TRUE
