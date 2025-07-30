@@ -1,0 +1,10 @@
+actions:
+  - name: "Bazel CI - PRs"
+    user: "buildbuddy"
+    triggers:
+      pull_request:
+        branches:
+          - "*"
+        merge_with_base: true
+    steps:
+      - run: time bazel test //...

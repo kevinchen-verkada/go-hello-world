@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "calculator_lib",
+    srcs = ["main.go"],
+    importpath = "golang.kevinchen-verkada/calculator",
+    visibility = ["//visibility:private"],
+    deps = ["//calculator/mathutils"],
+)
+
+go_binary(
+    name = "calculator",
+    embed = [":calculator_lib"],
+    visibility = ["//visibility:public"],
+)

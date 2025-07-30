@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "mathutils",
+    srcs = ["mathutils.go"],
+    importpath = "golang.kevinchen-verkada/calculator/mathutils",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_google_uuid//:uuid"],
+)
+
+go_test(
+    name = "mathutils_test",
+    srcs = ["mathutils_test.go"],
+    deps = [
+        ":mathutils",
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//require",
+    ],
+)
