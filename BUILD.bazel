@@ -8,8 +8,17 @@ gazelle_binary(
     ],
 )
 
-# gazelle:prefix golang.kevinchen-verkada
 gazelle(
     name = "gazelle",
     gazelle = ":gazelle_binary",
+)
+
+# gazelle:prefix golang.kevinchen-verkada
+gazelle(
+    name = "gazelle-update-repos",
+    args = [
+        "-from_file=bazel/workspace/go.mod",
+        "-to_macro=deps.bzl%go_dependencies",
+    ],
+    command = "update-repos",
 )
