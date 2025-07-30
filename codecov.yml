@@ -7,5 +7,5 @@ coverage:
         base: auto
 
 comment:
-    layout: "condensed_header, condensed_files, condensed_footer"
+    layout: "condensed_header, files, condensed_footer"
     hide_project_coverage: TRUE
