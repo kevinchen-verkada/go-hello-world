@@ -11,5 +11,8 @@ go_library(
 go_test(
     name = "formatting_test",
     srcs = ["formatting_test.go"],
-    deps = [":formatting"],
+    deps = [
+        ":formatting",
+        "@com_github_stretchr_testify//assert",
+    ],
 )
