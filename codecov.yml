@@ -9,6 +9,11 @@ coverage:
 github_checks:
   annotations: false
 
+flags:
+  integration:
+    paths:
+      - ".*"
+    carryforward: true
+
 comment:
-    layout: "files"
-    hide_project_coverage: TRUE
+  layout: "diff, files"
